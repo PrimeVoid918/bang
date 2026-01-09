@@ -1,0 +1,112 @@
+/* ==============================================
+   COMPLETE CSS RESET
+   Author: ChatGPT
+   Purpose: Normalize + reset all browser defaults
+   ============================================== */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove default link styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove default button styles */
+button,
+input,
+select,
+textarea {
+  background: none;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+}
+
+/* Remove default table borders */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove default heading margins */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: normal;
+}
+
+/* Remove default image spacing */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove default form element spacing */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Set HTML/body defaults */
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: #000; /* optional, perfect for Three.js canvas background */
+  color: #fff;       /* optional */
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Remove default scrollbars in some browsers (optional) */
+body::-webkit-scrollbar {
+  width: 0.5rem;
+  background: transparent;
+}
+
+/* Set consistent table and form font sizes */
+table,
+input,
+textarea,
+select,
+button {
+  font-size: 100%;
+}
+
+/* Accessibility & focus outline reset */
+:focus {
+  outline: 2px solid #06f; /* optional, keep some focus for accessibility */
+  outline-offset: 2px;
+}
+
+/* Default anchor cursor */
+a {
+  cursor: pointer;
+}
+
+/* Root variables (optional, for easy theming) */
+:root {
+  --color-bg: #000;
+  --color-text: #fff;
+}
