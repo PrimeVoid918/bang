@@ -4,6 +4,7 @@ import { WalkControls } from "../controls/WalkControls";
 import { Physics } from "../core/Physics";
 import { Debug } from "../helpers/debug";
 import { GltfLoader } from "../loaders/GltfLoader";
+import { RapierRaycaster } from "./RapierRaycaster";
 
 export interface ModelConfig {
   path: string;
@@ -47,6 +48,9 @@ export class LocalPlayer extends Player {
   private collider: RAPIER.Collider;
   private controls: WalkControls;
   private physics: Physics;
+  private groundSensor: RapierRaycaster;
+  private groundDebugLine: THREE.Line | null = null;
+  private wallSensor: RapierRaycaster;
   private grounded = false;
   public jumpForce = 5;
   public movementSpeed = 5;
@@ -68,14 +72,34 @@ export class LocalPlayer extends Player {
       RAPIER.ColliderDesc.capsule(0.9, 0.4),
       this.body
     );
+
+    this.groundSensor = new RapierRaycaster(
+      physics.world!,
+      { x: 0, y: -1, z: 0 },
+      1.05
+    );
+    this.wallSensor = new RapierRaycaster(
+      physics.world!,
+      { x: 0, y: 0, z: 1 },
+      0.5
+    );
   }
 
   update(delta: number) {
+    const translation = this.body.translation();
+    this.grounded = !!this.groundSensor.cast(translation);
+
     this.applyMovement();
     this.handleJump();
     this.syncVisual();
     this.updateGrounded();
     this.syncDebugMesh();
+
+    if (this.groundDebugLine) {
+      (this.groundDebugLine.material as THREE.LineBasicMaterial).color.set(
+        this.grounded ? 0xffffff : 0x00ff00
+      );
+    }
 
     if (this.showDebugMesh && this.debugMesh) {
       Debug.syncMesh(this.debugMesh, this.body);
@@ -93,15 +117,8 @@ export class LocalPlayer extends Player {
   }
 
   private updateGrounded() {
-    const origin = this.body.translation();
-
-    const ray = new RAPIER.Ray(
-      { x: origin.x, y: origin.y, z: origin.z },
-      { x: 0, y: -1, z: 0 }
-    );
-
-    //! warning
-    const hit = this.physics!.world!.castRay(ray, 1.05, true);
+    // Simply ask the sensor for a hit
+    const hit = this.groundSensor.cast(this.body.translation());
     this.grounded = !!hit;
   }
 
@@ -159,9 +176,12 @@ export class LocalPlayer extends Player {
 
     if (value && !this.debugMesh) {
       this.debugMesh = Debug.createColliderMesh(this.collider);
+      this.groundDebugLine = Debug.createRayHelper(1.05, 0x00ff00);
       this.object.add(this.debugMesh);
+      this.object.add(this.groundDebugLine);
     } else if (!value && this.debugMesh) {
       this.debugMesh.visible = false;
+      // this.groundDebugLine.visible = false;
     }
   }
 

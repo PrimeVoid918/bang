@@ -9,7 +9,7 @@ export class Debug {
    */
   static createColliderMesh(
     collider: RAPIERType.Collider,
-    color = 0xff00FF
+    color = 0xff00ff
   ): THREE.Mesh {
     let geometry: THREE.BufferGeometry;
 
@@ -56,5 +56,27 @@ export class Debug {
     const rot = body.rotation();
     mesh.position.set(pos.x, pos.y, pos.z);
     mesh.quaternion.set(rot.x, rot.y, rot.z, rot.w);
+  }
+
+  /**
+   * Ray helper for debugging
+   */
+  static createRayHelper(length: number, color = 0x00ff00): THREE.Line {
+    const geometry = new THREE.BufferGeometry().setFromPoints([
+      new THREE.Vector3(0, 0, 0),
+      new THREE.Vector3(0, -length, 0), // Default pointing down
+    ]);
+    const material = new THREE.LineBasicMaterial({ color });
+    return new THREE.Line(geometry, material);
+  }
+
+  static syncRayHelper(
+    line: THREE.Line,
+    origin: RAPIER.Vector,
+    direction: RAPIER.Vector
+  ) {
+    line.position.set(origin.x, origin.y, origin.z);
+    // You would need to update the line's rotation to match the direction
+    // Or simply update the geometry points
   }
 }
