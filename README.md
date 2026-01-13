@@ -19,7 +19,6 @@ A work-in-progress first-person 3D game developed with **Three.js**, **Rapier.js
 ### Planned Features
 
 - Shooting mechanics  
-- Enemy AI  
 - Interactive objects and expanded environments
 
 ## Technologies Used
