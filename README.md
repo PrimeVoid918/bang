@@ -1,30 +1,31 @@
 # Bang
 
-A work-in-progress first-person game built with **Three.js** and **Rapier.js**.
-
+A work-in-progress first-person 3D game developed with **Three.js**, **Rapier.js**, and **Blender**.
 
 <img src="https://img.shields.io/badge/Three.js-black?style=for-the-badge&logo=three.js&logoColor=white" width="150"/>
 <img src="https://img.shields.io/badge/Rapier.js-Physics-blue?style=for-the-badge" width="250"/>
+<img src="https://img.shields.io/badge/Blender-3D-orange?style=for-the-badge&logo=blender&logoColor=white" width="250"/>
 
 ## Overview
 
-Currently, *Bang!* is an experimental 3D world. The project focuses on building the environment and movement mechanics first.
+*Bang!* is currently an experimental 3D environment. The project emphasizes foundational development, starting with world building and movement mechanics.
 
-**Features (in progress):**  
+### Features in Progress
 
-- First-person movement  
-- Basic colliders and world physics  
-- Empty world for testing and adjustments
+- First-person player movement  
+- Basic physics and collision handling  
+- Empty world for testing and iterative adjustments
 
-**Planned Features:**  
+### Planned Features
 
 - Shooting mechanics  
 - Enemy AI  
-- Interactive objects and map expansion
+- Interactive objects and expanded environments
 
 ## Technologies Used
 
 - [Three.js](https://threejs.org/) – 3D rendering and scene management  
-- [Rapier.js](https://rapier.rs/) – Physics engine for collision detection and movement  
-- TypeScript – For type-safe development  
-- Vite – Build tool and development server
+- [Rapier.js](https://rapier.rs/) – Physics engine for collisions and movement  
+- [Blender](https://www.blender.org/) – 3D modeling and asset creation  
+- TypeScript – Type-safe development  
+- Vite – Modern build tool and development server
