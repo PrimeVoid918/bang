@@ -2,9 +2,9 @@
 
 A work-in-progress first-person 3D game developed with **Three.js**, **Rapier.js**, and **Blender**.
 
-<img src="https://img.shields.io/badge/Three.js-black?style=for-the-badge&logo=three.js&logoColor=white" width="150"/>
-<img src="https://img.shields.io/badge/Rapier.js-Physics-blue?style=for-the-badge" width="250"/>
-<img src="https://img.shields.io/badge/Blender-3D-orange?style=for-the-badge&logo=blender&logoColor=white" width="250"/>
+![Three.js](https://img.shields.io/badge/Three.js-black?style=for-the-badge&logo=three.js&logoColor=white)
+![Rapier.js](https://img.shields.io/badge/Rapier.js-Physics-blue?style=for-the-badge)
+![Blender](https://img.shields.io/badge/Blender-3D-orange?style=for-the-badge&logo=blender&logoColor=white)
 
 ## Overview
 
